@@ -75,3 +75,21 @@ function mealRecipeModal(meal){
     mealDetailsContent.innerHTML = html;
     mealDetailsContent.parentElement.classList.add('showRecipe');
 }
+
+const form = document.getElementById('login-form');
+form.addEventListener('submit', (event) => {
+  event.preventDefault(); // prevent the form from being submitted
+
+  // retrieve the values of the input fields
+  const username = form.elements.username.value;
+  const password = form.elements.password.value;
+
+  // validate the username and password
+  if (username === 'valid_username' && password === 'valid_password') {
+    // redirect the user to the recipe app
+    window.location.href = 'recipe_app.html';
+  } else {
+    // display an error message
+    alert('Invalid username or password');
+  }
+});
