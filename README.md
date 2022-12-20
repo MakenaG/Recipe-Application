@@ -20,6 +20,9 @@ View detailed information and instructions for each recipe
 If you haven't already, fork and clone this into your local environment.
 
 # Alternative 1
+. Use the github page link provided below to get started
+
+      https://makenag.github.io/Recipe-Application/
 - 
 
 # Quick Review to clone the program into your local environment
