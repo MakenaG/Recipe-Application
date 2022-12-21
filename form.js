@@ -1,4 +1,4 @@
-//TODO : Its a Completed Code//
+//Its a Completed Code//
 function formvalid() {
   var vaildpass = document.getElementById("pass").value;
 
