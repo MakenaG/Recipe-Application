@@ -6,8 +6,9 @@ Welcome to the G-Recipe App!
 This app is a platform for users to search for their favorite recipes . With a user-friendly interface and a vast collection of recipes, the Recipe App is the perfect tool for finding inspiration for your next meal.
 
 # Features
-Search for recipes by keyword or ingredient
-View detailed information and instructions for each recipe
+1. Login link
+2. Search for recipes by keyword or ingredient
+3. View detailed information and instructions for each recipe
 
 
 # This program consists of;
