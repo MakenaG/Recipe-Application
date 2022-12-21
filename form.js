@@ -1,78 +1,54 @@
-// form loading animation
+function setFormMessage(formElement, type, message) {
+    const messageElement = formElement.querySelector(".form__message");
 
-const form = [...document.querySelector('.form').children];
-
-form.forEach((item, i) => {
-    setTimeout(() => {
-        item.style.opacity = 1;
-    }, i*100);
-})
-
-window.onload = () => {
-    if(sessionStorage.name){
-        location.href = '/';
-    }
+    messageElement.textContent = message;
+    messageElement.classList.remove("form__message--success", "form__message--error");
+    messageElement.classList.add(`form__message--${type}`);
 }
 
-// form validation
-
-const name = document.querySelector('.name') || null;
-const email = document.querySelector('.email');
-const password = document.querySelector('.password');
-const submitBtn = document.querySelector('.submit-btn');
-
-if(name == null){ // means login page is open
-    submitBtn.addEventListener('click', () => {
-        fetch('/login-user',{
-            method: 'post',
-            headers: new Headers({'Content-Type': 'application/json'}),
-            body: JSON.stringify({
-                email: email.value,
-                password: password.value
-            })
-        })
-        .then(res => res.json())
-        .then(data => {
-            validateData(data);
-        })
-    })
-} else{ // means register page is open
-
-    submitBtn.addEventListener('click', () => {
-        fetch('/register-user', {
-            method: 'post',
-            headers: new Headers({'Content-Type': 'application/json'}),
-            body: JSON.stringify({
-                name: name.value,
-                email: email.value,
-                password: password.value
-            })
-        })
-        .then(res => res.json())
-        .then(data => {
-            validateData(data);
-        })
-    })
-
+function setInputError(inputElement, message) {
+    inputElement.classList.add("form__input--error");
+    inputElement.parentElement.querySelector(".form__input-error-message").textContent = message;
 }
 
-const validateData = (data) => {
-    if(!data.name){
-        alertBox(data);
-    } else{
-        sessionStorage.name = data.name;
-        sessionStorage.email = data.email;
-        location.href = '/';
-    }
+function clearInputError(inputElement) {
+    inputElement.classList.remove("form__input--error");
+    inputElement.parentElement.querySelector(".form__input-error-message").textContent = "";
 }
 
-const alertBox = (data) => {
-    const alertContainer = document.querySelector('.alert-box');
-    const alertMsg = document.querySelector('.alert');
-    alertMsg.innerHTML = data;
+document.addEventListener("DOMContentLoaded", () => {
+    const loginForm = document.querySelector("#login");
+    const createAccountForm = document.querySelector("#createAccount");
 
-    alertContainer.style.top = `5%`;
-    setTimeout(() => {
-        alertContainer.style.top = null;
-    }, 5000);
-}
+    document.querySelector("#linkCreateAccount").addEventListener("click", e => {
+        e.preventDefault();
+        loginForm.classList.add("form--hidden");
+        createAccountForm.classList.remove("form--hidden");
+    });
+
+    document.querySelector("#linkLogin").addEventListener("click", e => {
+        e.preventDefault();
+        loginForm.classList.remove("form--hidden");
+        createAccountForm.classList.add("form--hidden");
+    });
+
+    loginForm.addEventListener("submit", e => {
+        e.preventDefault();
+
+        // Perform your AJAX/Fetch login
+
+        setFormMessage(loginForm, "error", "Invalid username/password combination");
+    });
+
+    document.querySelectorAll(".form__input").forEach(inputElement => {
+        inputElement.addEventListener("blur", e => {
+            if (e.target.id === "signupUsername" && e.target.value.length > 0 && e.target.value.length < 10) {
+                setInputError(inputElement, "Username must be at least 10 characters in length");
+            }
+        });
+
+        inputElement.addEventListener("input", e => {
+            clearInputError(inputElement);
+        });
+    });
+});
