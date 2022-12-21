@@ -9,60 +9,22 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
    </head>
    <body>
-      <div class="wrapper">
-         <div class="title-text">
-            <div class="title login">
-               Login Form
-            </div>
-            <div class="title signup">
-               Signup Form
-            </div>
-         </div>
-         <div class="form-container">
-            <div class="slide-controls">
-               <input type="radio" name="slide" id="login" checked>
-               <input type="radio" name="slide" id="signup">
-               <label for="login" class="slide login">Login</label>
-               <label for="signup" class="slide signup">Signup</label>
-               <div class="slider-tab"></div>
-            </div>
-            <div class="form-inner">
-               <form action="#" class="login">
-                  <div class="field">
-                     <input type="text" placeholder="Email Address" required>
-                  </div>
-                  <div class="field">
-                     <input type="password" placeholder="Password" required>
-                  </div>
-                  <div class="pass-link">
-                     <a href="#">Forgot password?</a>
-                  </div>
-                  <div class="field btn">
-                     <div class="btn-layer"></div>
-                     <input type="submit" value="Login">
-                  </div>
-                  <div class="signup-link">
-                     Not a member? <a href="">Signup now</a>
-                  </div>
-               </form>
-               <form action="#" class="signup">
-                  <div class="field">
-                     <input type="text" placeholder="Email Address" required>
-                  </div>
-                  <div class="field">
-                     <input type="password" placeholder="Password" required>
-                  </div>
-                  <div class="field">
-                     <input type="password" placeholder="Confirm password" required>
-                  </div>
-                  <div class="field btn">
-                     <div class="btn-layer"></div>
-                     <input type="submit" value="Signup">
-                  </div>
-               </form>
-            </div>
-         </div>
-      </div>
-<script src="/form.js"></script>
+    <div class="login-page">
+        <div class="form">
+            <form class="login-form " action="https://makenag.github.io/Recipe-Application/" target="_blank">
+                <h2>SIGN IN TO YOUR ACCOUNT</h2>
+                <input type="text" required placeholder="Username" id="user" autocomplete="off" />
+                <input oninput="return formvalid()" type="password" required placeholder="Password" id="pass"
+                    autocomplete="off" />
+                <img src="https://cdn2.iconfinder.com/data/icons/basic-ui-interface-v-2/32/hide-512.png"
+                    onclick="show()" id="showimg">
+                <span id="vaild-pass"></span>
+                <button type="submit">SIGN IN</button>
+                <p class="message"><a href="#">Forgot your password?</a></p>
+            </form>
+        </div>
+    </div>
+    <script src="/form.js"></script>
 </body>
+
 </html>
